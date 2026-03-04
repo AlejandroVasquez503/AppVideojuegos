@@ -23,6 +23,6 @@ namespace appWeb2.Models
         [Required]
         public string descripcion { get; set; }
 
-        public ICollection<Compra> Compras { get; set; }
+        //public ICollection<Compra> Compras { get; set; }
     }
 }

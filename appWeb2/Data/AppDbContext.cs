@@ -26,11 +26,11 @@ namespace appWeb2.Data
                 .HasForeignKey(c => c.UsuarioId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Compra>()
-                .HasOne(c=> c.VideoJuegos)
-                .WithMany(V => V.Compras)
-                .HasForeignKey(c=> c.VideJuegoId)
-                .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<Compra>()
+            //    .HasOne(c=> c.VideoJuegos)
+            //    .WithMany(V => V.Compras)
+            //    .HasForeignKey(c=> c.VideJuegoId)
+            //    .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
