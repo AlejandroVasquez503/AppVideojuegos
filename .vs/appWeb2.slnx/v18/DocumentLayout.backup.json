@@ -1,0 +1,101 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\renes\\source\\repos\\appWeb2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renes\\source\\repos\\appweb2\\appweb2\\views\\videojuegos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\views\\videojuegos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renes\\source\\repos\\appweb2\\appweb2\\controllers\\videojuegoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\controllers\\videojuegoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renes\\source\\repos\\appweb2\\appweb2\\views\\videojuegos\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\views\\videojuegos\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renes\\source\\repos\\appweb2\\appweb2\\views\\videojuegos\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\views\\videojuegos\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renes\\source\\repos\\appweb2\\appweb2\\views\\videojuegos\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\views\\videojuegos\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VideoJuegosController.cs",
+              "DocumentMoniker": "C:\\Users\\renes\\source\\repos\\appWeb2\\appWeb2\\Controllers\\VideoJuegosController.cs",
+              "RelativeDocumentMoniker": "appWeb2\\Controllers\\VideoJuegosController.cs",
+              "ToolTip": "C:\\Users\\renes\\source\\repos\\appWeb2\\appWeb2\\Controllers\\VideoJuegosController.cs",
+              "RelativeToolTip": "appWeb2\\Controllers\\VideoJuegosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:01:28.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\renes\\source\\repos\\appWeb2\\appWeb2\\Views\\VideoJuegos\\Index.cshtml",
+              "RelativeDocumentMoniker": "appWeb2\\Views\\VideoJuegos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\renes\\source\\repos\\appWeb2\\appWeb2\\Views\\VideoJuegos\\Index.cshtml",
+              "RelativeToolTip": "appWeb2\\Views\\VideoJuegos\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T17:46:48.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\renes\\source\\repos\\appWeb2\\appWeb2\\Views\\VideoJuegos\\Create.cshtml",
+              "RelativeDocumentMoniker": "appWeb2\\Views\\VideoJuegos\\Create.cshtml",
+              "ToolTip": "C:\\Users\\renes\\source\\repos\\appWeb2\\appWeb2\\Views\\VideoJuegos\\Create.cshtml",
+              "RelativeToolTip": "appWeb2\\Views\\VideoJuegos\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T17:47:09.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\renes\\source\\repos\\appWeb2\\appWeb2\\Views\\VideoJuegos\\Delete.cshtml",
+              "RelativeDocumentMoniker": "appWeb2\\Views\\VideoJuegos\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\renes\\source\\repos\\appWeb2\\appWeb2\\Views\\VideoJuegos\\Delete.cshtml",
+              "RelativeToolTip": "appWeb2\\Views\\VideoJuegos\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T17:47:27.277Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\renes\\source\\repos\\appWeb2\\appWeb2\\Views\\VideoJuegos\\Edit.cshtml",
+              "RelativeDocumentMoniker": "appWeb2\\Views\\VideoJuegos\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\renes\\source\\repos\\appWeb2\\appWeb2\\Views\\VideoJuegos\\Edit.cshtml",
+              "RelativeToolTip": "appWeb2\\Views\\VideoJuegos\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T17:47:43.896Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
