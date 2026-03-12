@@ -2,7 +2,7 @@
 
 <h2>Crear Videojuego</h2>
 
-<form asp-action="Create" method="post">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
     <div>
         <label>Titulo</label>
         <input asp-for="titulo" class="form-control" />
@@ -25,6 +25,11 @@
     <div>
         <label>Descripción</label>
         <textarea asp-for="descripcion" class="form-control"></textarea>
+    </div>
+
+    <div>
+        <label>Imagen</label><br> <br>
+        <input type="file" name="archivoImagen" class="form-control" /> <br>
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar</button>
