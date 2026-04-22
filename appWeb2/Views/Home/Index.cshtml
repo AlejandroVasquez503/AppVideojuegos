@@ -1,0 +1,80 @@
+﻿@model IEnumerable<appWeb2.Models.VideoJuegos>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Videojuegos Disponibles</h2>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Enlaces Rápidos</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="@Url.Action("Categorias", "VideoJuegos")" class="btn btn-outline-primary btn-lg w-100">
+                            <i class="fas fa-tags"></i> Categorías
+                        </a>
+                        <p class="text-muted mt-2">Explora juegos por categoría</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="@Url.Action("NuevosJuegos", "VideoJuegos")" class="btn btn-outline-success btn-lg w-100">
+                            <i class="fas fa-star"></i> Nuevos Juegos
+                        </a>
+                        <p class="text-muted mt-2">Los últimos 15 juegos agregados</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="@Url.Action("Promociones", "VideoJuegos")" class="btn btn-outline-danger btn-lg w-100">
+                            <i class="fas fa-percentage"></i> Promociones
+                        </a>
+                        <p class="text-muted mt-2">Juegos con ofertas especiales</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Catálogo Completo</h3>
+
+<div class="row">
+    @foreach (var juego in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                @if (!string.IsNullOrEmpty(juego.imagen))
+                {
+                    <img src="@juego.imagen" class="card-img-top" alt="@juego.titulo" style="height: 200px; object-fit: cover;">
+                }
+                else
+                {
+                    <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+                        <span class="text-muted">Sin imagen</span>
+                    </div>
+                }
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h5 class="card-title">@juego.titulo</h5>
+                        @if (juego.EnPromocion)
+                        {
+                            <span class="badge bg-success">En Promoción</span>
+                        }
+                    </div>
+                    <p class="card-text">@juego.descripcion</p>
+                    <p class="card-text">
+                        <strong>Categoría:</strong> @juego.Categoria?.categoria<br>
+                        <strong>Precio:</strong> $@juego.precio.ToString("F2")<br>
+                        <strong>Edad Mínima:</strong> <span class="badge bg-info">@juego.EdadMinima</span>
+                        @if (juego.EnPromocion)
+                        {
+                            <span class="badge bg-success ms-2">En Promoción</span>
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

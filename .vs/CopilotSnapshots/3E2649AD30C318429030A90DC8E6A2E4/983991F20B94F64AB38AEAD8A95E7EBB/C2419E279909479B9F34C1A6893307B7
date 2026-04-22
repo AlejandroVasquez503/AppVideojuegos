@@ -1,0 +1,127 @@
+﻿using appWeb2.Data;
+using appWeb2.Filtros;
+using appWeb2.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace appWeb2.Controllers
+    {
+        public class AccountController : Controller
+        {
+            private readonly AppDbContext _context;
+
+            public AccountController(AppDbContext context)
+            {
+                _context = context;
+            }
+
+            public IActionResult Index()
+            {
+                return RedirectToAction("Login");
+            }
+
+            [SessionAuthorize]
+            public IActionResult Dashboard()
+            {
+                //var data = (from v in _context.VideoJuegos
+                //            join c in _context.Categorias
+                //            on v.idcategoria equals c.idcategoria
+                //            group v by c.categoria into g
+                //            select new
+                //            {
+                //                Categoria = g.Key,
+                //                Total = g.Count()
+                //            }).ToList();
+
+                //ViewBag.Categoria = data.Select(x => x.Categoria).ToList();
+                //ViewBag.Totales = data.Select(x => x.Total).ToList();
+
+                return View();
+            }
+        
+        public IActionResult ObtenerDatos (string categoria)
+        {
+            var query = from v in _context.VideoJuegos
+                        join c in _context.Categorias
+                        on v.idcategoria equals c.idcategoria
+                        select new { c.categoria };
+
+            if(!string.IsNullOrEmpty(categoria))
+            {
+                query = query.Where(x => x.categoria == categoria);
+            } 
+
+            var data = query
+                .GroupBy(x => x.categoria)
+                .Select(g => new
+                {
+                    categoria= g.Key,
+                    total =g.Count()
+                }).ToList();
+
+            return Json(data);
+        }
+
+
+            public IActionResult Login ()
+            {
+            return View();
+            }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(Login model)
+        {
+            //var user = _context.Usuarios
+            //    .FirstOrDefault(u => u.correo == model.correo && u.password == model.password);
+
+            //if (user != null)
+            //{
+            //    HttpContext.Session.SetString("usuario", user.nombre);
+            //    Console.WriteLine("Usuario logueado: " + user.nombre);
+            //    return RedirectToAction("Index", "Home");
+            //}
+
+            //ViewBag.Error = "Credenciales incorrectos";
+            //return View("Index");
+
+            var user = _context.Usuarios
+                .FirstOrDefault(u => u.correo == model.correo);
+
+            if (user != null)
+            {
+                string saltedPassword = model.password + user.salt;
+
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] inputBytes = Encoding.Unicode.GetBytes(saltedPassword);
+                    byte[] hashBytes = sha256.ComputeHash(inputBytes);
+                    Console.WriteLine("Password input: " + model.password);
+                    Console.WriteLine("Salt DB: " + user.salt);
+                    Console.WriteLine("Concatenado: " + saltedPassword);
+
+                    Console.WriteLine("Hash generado: " + Convert.ToBase64String(hashBytes));
+                    Console.WriteLine("Hash DB: " + user.password);
+
+                    if (hashBytes.SequenceEqual(user.password))
+                    {
+                        HttpContext.Session.SetString("usuario", user.nombre);
+                        return RedirectToAction("Dashboard", "Account");
+                    }
+                }
+
+            }
+
+            ViewBag.Error = "Credenciales incorrectos";
+            return View();
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
+        }
+    }
+}
+    

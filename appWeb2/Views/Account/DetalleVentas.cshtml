@@ -1,0 +1,41 @@
+﻿<form action="/" method="post">
+    <input type="datetime" name="desde" value="@ViewBag.Desde?.ToString("yyyy-MM-DD")" />
+    <input type="datetime" name="hasta" value="@ViewBag.Desde?.ToString("yyyy-MM-DD")" />
+    <button type="submit">Filtrar</button>
+
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>VideoJuego</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+            <th>Codigo</th>
+        </tr>
+    </thead>
+    <tbody>
+      @foreach (var venta in Model)
+       {
+          <tr>
+              <td>@venta.UsuarioId</td>
+              <td>@venta.VideoJuegosId</td>
+              <td>@venta.cantidad</td>
+              <td>@venta.total</td>
+              <td>@venta.estadoCompra</td>
+              <td>@venta.fechaHoraTransaccion</td>
+              <td>@venta.codigoTransaccion</td>
+          </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    @for (int i = 1; i <= ViewBag.TotalPaginas  ; i++)
+    {
+        <a href="pagina=@i&desde=@ViewBag.Desde&Hasta=@ViewBag.Hasta">@i</a>
+    }
+</div>

@@ -1,0 +1,58 @@
+@model List<appWeb2.Models.VideoJuegos>
+
+@{
+    ViewData["Title"] = "Juegos de Categoría: " + ViewBag.Categoria;
+}
+
+<h2>Juegos de Categoría: @ViewBag.Categoria</h2>
+
+<div class="row">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var juego in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    @if (!string.IsNullOrEmpty(juego.imagen))
+                    {
+                        <img src="@juego.imagen" class="card-img-top" alt="@juego.titulo" style="height: 200px; object-fit: cover;">
+                    }
+                    else
+                    {
+                        <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+                            <span class="text-muted">Sin imagen</span>
+                        </div>
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@juego.titulo</h5>
+                        <p class="card-text">
+                            <strong>Categoría:</strong> @juego.Categoria?.categoria<br>
+                            <strong>Precio:</strong> $@juego.precio.ToString("F2")
+                            @if (juego.EnPromocion)
+                            {
+                                <span class="badge bg-success ms-2">En Promoción</span>
+                            }
+                        </p>
+                        <p class="card-text">
+                            <strong>Edad Mínima:</strong> <span class="badge bg-info">@juego.EdadMinima</span>
+                        </p>
+                        <p class="card-text">@juego.descripcion</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12">
+            <div class="alert alert-info">
+                No hay juegos disponibles en la categoría @ViewBag.Categoria.
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    <a href="@Url.Action("Categorias", "VideoJuegos")" class="btn btn-secondary">Volver a Categorías</a>
+    <a href="@Url.Action("Index", "VideoJuegos")" class="btn btn-primary">Ver Catálogo Completo</a>
+</div>

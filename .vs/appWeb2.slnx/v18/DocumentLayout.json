@@ -1,0 +1,133 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renea\\desktop\\appvideojuegos-main\\appweb2\\migrations\\20260421172810_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\migrations\\20260421172810_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renea\\desktop\\appvideojuegos-main\\appweb2\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renea\\desktop\\appvideojuegos-main\\appweb2\\models\\compra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\models\\compra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renea\\desktop\\appvideojuegos-main\\appweb2\\views\\videojuegos\\detalleventas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\views\\videojuegos\\detalleventas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renea\\desktop\\appvideojuegos-main\\appweb2\\models\\detallecompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\models\\detallecompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|c:\\users\\renea\\desktop\\appvideojuegos-main\\appweb2\\models\\ventaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E9C489E-056B-F73E-D0BD-58AEDB7DE61E}|appWeb2\\appWeb2.csproj|solutionrelative:appweb2\\models\\ventaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Migrations\\20260421161939_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:appWeb2\\Migrations\\20260421161939_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260421172810_Initial.cs",
+              "DocumentMoniker": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Migrations\\20260421172810_Initial.cs",
+              "RelativeDocumentMoniker": "appWeb2\\Migrations\\20260421172810_Initial.cs",
+              "ToolTip": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Migrations\\20260421172810_Initial.cs",
+              "RelativeToolTip": "appWeb2\\Migrations\\20260421172810_Initial.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T17:28:10.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Compra.cs",
+              "DocumentMoniker": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Models\\Compra.cs",
+              "RelativeDocumentMoniker": "appWeb2\\Models\\Compra.cs",
+              "ToolTip": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Models\\Compra.cs",
+              "RelativeToolTip": "appWeb2\\Models\\Compra.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T17:18:52.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DetalleVentas.cshtml",
+              "DocumentMoniker": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Views\\VideoJuegos\\DetalleVentas.cshtml",
+              "RelativeDocumentMoniker": "appWeb2\\Views\\VideoJuegos\\DetalleVentas.cshtml",
+              "ToolTip": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Views\\VideoJuegos\\DetalleVentas.cshtml",
+              "RelativeToolTip": "appWeb2\\Views\\VideoJuegos\\DetalleVentas.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-21T17:07:49.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DetalleCompra.cs",
+              "DocumentMoniker": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Models\\DetalleCompra.cs",
+              "RelativeDocumentMoniker": "appWeb2\\Models\\DetalleCompra.cs",
+              "ToolTip": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Models\\DetalleCompra.cs",
+              "RelativeToolTip": "appWeb2\\Models\\DetalleCompra.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T17:01:31.799Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VentaViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Models\\VentaViewModel.cs",
+              "RelativeDocumentMoniker": "appWeb2\\Models\\VentaViewModel.cs",
+              "ToolTip": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Models\\VentaViewModel.cs",
+              "RelativeToolTip": "appWeb2\\Models\\VentaViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T17:00:24.329Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "appWeb2\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "appWeb2\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAYwKMAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T17:00:53.897Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "20260421161939_Initial.cs",
+              "DocumentMoniker": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Migrations\\20260421161939_Initial.cs",
+              "RelativeDocumentMoniker": "appWeb2\\Migrations\\20260421161939_Initial.cs",
+              "ToolTip": "C:\\Users\\renea\\Desktop\\AppVideojuegos-main\\appWeb2\\Migrations\\20260421161939_Initial.cs",
+              "RelativeToolTip": "appWeb2\\Migrations\\20260421161939_Initial.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T16:19:39.561Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

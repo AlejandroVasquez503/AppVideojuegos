@@ -1,0 +1,59 @@
+﻿@model List<appWeb2.Models.VideoJuegos>
+
+@{
+    ViewData["Title"] = "Juegos en Promoción";
+}
+
+<h2>Juegos en Promoción</h2>
+
+<div class="row">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var juego in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card border-success">
+                    @if (!string.IsNullOrEmpty(juego.imagen))
+                    {
+                        <img src="@juego.imagen" class="card-img-top" alt="@juego.titulo" style="height: 200px; object-fit: cover;">
+                    }
+                    else
+                    {
+                        <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+                            <span class="text-muted">Sin imagen</span>
+                        </div>
+                    }
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <h5 class="card-title">@juego.titulo</h5>
+                            <span class="badge bg-success fs-6">¡OFERTA!</span>
+                        </div>
+                        <p class="card-text">
+                            <strong>Categoría:</strong> @juego.Categoria?.categoria<br>
+                            <strong>Precio:</strong>
+                            <span class="text-success fw-bold">$@juego.precio.ToString("F2")</span>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">Agregado el: @juego.FechaCreacion.ToString("dd/MM/yyyy")</small><br>
+                            <strong>Edad Mínima:</strong> <span class="badge bg-info">@juego.EdadMinima</span>
+                        </p>
+                        <p class="card-text">@juego.descripcion</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12">
+            <div class="alert alert-warning">
+                <h4 class="alert-heading">Sin Promociones</h4>
+                <p>No hay juegos en promoción en este momento. ¡Vuelve pronto para encontrar las mejores ofertas!</p>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    <a href="@Url.Action("Index", "VideoJuegos")" class="btn btn-primary">Ver Catálogo Completo</a>
+</div>

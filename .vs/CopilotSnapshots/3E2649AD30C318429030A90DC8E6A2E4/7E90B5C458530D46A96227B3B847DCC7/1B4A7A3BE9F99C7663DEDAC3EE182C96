@@ -1,0 +1,54 @@
+﻿@model appWeb2.Models.VideoJuegos
+
+<h2>Editar Videojuego</h2>
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label>Título</label>
+        <input asp-for="titulo" class="form-control" />
+        <span asp-validation-for="titulo"></span>
+    </div>
+
+    <div>
+        <label>Precio</label>
+        <input asp-for="precio" class="form-control" />
+        <span asp-validation-for="precio"></span>
+    </div>
+
+    <div>
+        <label>Categoría</label>
+        <input asp-for="categoria" class="form-control" />
+        <span asp-validation-for="categoria"></span>
+    </div>
+
+    <div>
+        <label>Descripción</label>
+        <textarea asp-for="descripcion" class="form-control"></textarea>
+    </div>
+
+    <div>
+        <label>Edad Mínima</label>
+        <input asp-for="EdadMinima" class="form-control" placeholder="Ej: +12, +18, +3" />
+        <span asp-validation-for="EdadMinima"></span>
+    </div>
+
+    <div>
+        <label>Imagen Actual</label> <br>
+        <img src="@Model.imagen" width="120" />
+    </div>
+
+    <div>
+        <label>Nueva Imagen</label><br>
+        <input type="file" name="archivoImagen" class="form-control"/>
+    </div>
+
+    <div>
+        <label>
+            <input type="checkbox" asp-for="EnPromocion" />
+            En Promoción
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-warning">Actualizar</button>
+</form>
