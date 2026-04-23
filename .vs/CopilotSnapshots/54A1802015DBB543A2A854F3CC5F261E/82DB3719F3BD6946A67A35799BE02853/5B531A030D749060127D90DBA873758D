@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Pagar con PayPal";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Resumen de Compra</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Total a Pagar:</strong> $<span id="totalAmount">0.00</span> USD</p>
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script de PayPal -->
+<script src="https://www.paypal.com/sdk/js?client-id=ASRLqkVcGuPjeTBpDM6N6MJufCYhvpj64uLb9S7PzJaslxKnMIe4uOvf9e8N0jhWgmL5sX4gV3esv0YW=USD"></script>
+
+<script>
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            // Obtener monto (ajusta según tu lógica)
+            const amount = document.getElementById('totalAmount').textContent || '0.00';
+
+            return fetch('/Payment/CreateOrder', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    amount: parseFloat(amount),
+                    description: 'Compra de Videojuegos'
+                })
+            })
+                .then(function(res) {
+                    return res.json();
+                })
+                .then(function(orderData) {
+                    return orderData.id;
+                });
+        },
+
+        onApprove: function(data, actions) {
+            // El usuario aprobó en PayPal, ahora capturamos la orden
+            return fetch('/Payment/ApproveOrder?token=' + data.orderID, {
+                method: 'GET'
+            })
+                .then(function(res) {
+                    window.location.href = '/Payment/ApproveOrder?token=' + data.orderID;
+                });
+        },
+
+        onError: function(err) {
+            console.error('Error:', err);
+            alert('Hubo un error procesando el pago. Por favor intenta nuevamente.');
+        },
+
+        onCancel: function(data) {
+            // Usuario canceló el pago
+            window.location.href = '/Payment/CancelOrder';
+        }
+    }).render('#paypal-button-container');
+</script>

@@ -1,4 +1,5 @@
 using appWeb2.Data;
+using appWeb2.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,11 @@ option.UseSqlServer(
     builder.Configuration.GetConnectionString("con")
 ));
 builder.Services.AddSession();
+
+// Registrar HttpClient y PayPalService
+builder.Services.AddHttpClient<PayPalService>();
+builder.Services.AddScoped<PayPalService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

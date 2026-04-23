@@ -1,0 +1,202 @@
+﻿using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
+
+namespace appWeb2.Services
+{
+    public class PayPalService
+    {
+        private readonly IConfiguration _configuration;
+        private readonly HttpClient _httpClient;
+        private string _accessToken;
+        private DateTime _tokenExpiry;
+
+        private const string SandboxUrl = "https://api-m.sandbox.paypal.com";
+        private const string LiveUrl = "https://api-m.paypal.com";
+
+        public PayPalService(IConfiguration configuration, HttpClient httpClient)
+        {
+            _configuration = configuration;
+            _httpClient = httpClient;
+        }
+
+        private async Task<string> GetAccessTokenAsync()
+        {
+            // Si el token sigue siendo válido, reutilizarlo
+            if (!string.IsNullOrEmpty(_accessToken) && DateTime.UtcNow < _tokenExpiry)
+            {
+                return _accessToken;
+            }
+
+            var clientId = _configuration["PayPal:ClientId"];
+            var clientSecret = _configuration["PayPal:ClientSecret"];
+            var mode = _configuration["PayPal:Mode"];
+
+            var baseUrl = mode == "sandbox" ? SandboxUrl : LiveUrl;
+
+            var auth = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{clientId}:{clientSecret}"));
+
+            using (var request = new HttpRequestMessage(HttpMethod.Post, $"{baseUrl}/v1/oauth2/token"))
+            {
+                request.Headers.Authorization = new AuthenticationHeaderValue("Basic", auth);
+                request.Content = new StringContent("grant_type=client_credentials", Encoding.UTF8, "application/x-www-form-urlencoded");
+
+                var response = await _httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                var json = await response.Content.ReadAsStringAsync();
+                var doc = JsonDocument.Parse(json);
+
+                _accessToken = doc.RootElement.GetProperty("access_token").GetString();
+                var expiresIn = doc.RootElement.GetProperty("expires_in").GetInt32();
+                _tokenExpiry = DateTime.UtcNow.AddSeconds(expiresIn - 60);
+
+                return _accessToken;
+            }
+        }
+
+        /// <summary>
+        /// Crear una orden de pago en PayPal
+        /// </summary>
+        public async Task<string> CreateOrderAsync(decimal amount, string description, string returnUrl, string cancelUrl)
+        {
+            try
+            {
+                var token = await GetAccessTokenAsync();
+                var mode = _configuration["PayPal:Mode"];
+                var baseUrl = mode == "sandbox" ? SandboxUrl : LiveUrl;
+
+                var requestBody = new
+                {
+                    intent = "CAPTURE",
+                    purchase_units = new[]
+                    {
+                        new
+                        {
+                            amount = new
+                            {
+                                currency_code = "USD",
+                                value = amount.ToString("F2")
+                            },
+                            description = description
+                        }
+                    },
+                    application_context = new
+                    {
+                        return_url = returnUrl,
+                        cancel_url = cancelUrl,
+                        user_action = "PAY_NOW"
+                    }
+                };
+
+                using (var request = new HttpRequestMessage(HttpMethod.Post, $"{baseUrl}/v2/checkout/orders"))
+                {
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    request.Content = new StringContent(
+                        JsonSerializer.Serialize(requestBody),
+                        Encoding.UTF8,
+                        "application/json"
+                    );
+
+                    var response = await _httpClient.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
+
+                    var json = await response.Content.ReadAsStringAsync();
+                    var doc = JsonDocument.Parse(json);
+
+                    return doc.RootElement.GetProperty("id").GetString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al crear la orden en PayPal", ex);
+            }
+        }
+
+        /// <summary>
+        /// Capturar el pago (después que el usuario aprueba)
+        /// </summary>
+        public async Task<PayPalOrderResponse> CaptureOrderAsync(string orderId)
+        {
+            try
+            {
+                var token = await GetAccessTokenAsync();
+                var mode = _configuration["PayPal:Mode"];
+                var baseUrl = mode == "sandbox" ? SandboxUrl : LiveUrl;
+
+                using (var request = new HttpRequestMessage(HttpMethod.Post, $"{baseUrl}/v2/checkout/orders/{orderId}/capture"))
+                {
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    request.Content = new StringContent("", Encoding.UTF8, "application/json");
+
+                    var response = await _httpClient.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
+
+                    var json = await response.Content.ReadAsStringAsync();
+                    var doc = JsonDocument.Parse(json);
+
+                    return ParseOrderResponse(doc);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al capturar la orden {orderId}", ex);
+            }
+        }
+
+        /// <summary>
+        /// Obtener detalles de una orden
+        /// </summary>
+        public async Task<PayPalOrderResponse> GetOrderAsync(string orderId)
+        {
+            try
+            {
+                var token = await GetAccessTokenAsync();
+                var mode = _configuration["PayPal:Mode"];
+                var baseUrl = mode == "sandbox" ? SandboxUrl : LiveUrl;
+
+                using (var request = new HttpRequestMessage(HttpMethod.Get, $"{baseUrl}/v2/checkout/orders/{orderId}"))
+                {
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    var response = await _httpClient.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
+
+                    var json = await response.Content.ReadAsStringAsync();
+                    var doc = JsonDocument.Parse(json);
+
+                    return ParseOrderResponse(doc);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al obtener detalles de la orden {orderId}", ex);
+            }
+        }
+
+        private PayPalOrderResponse ParseOrderResponse(JsonDocument doc)
+        {
+            var root = doc.RootElement;
+            var status = root.GetProperty("status").GetString();
+            var id = root.GetProperty("id").GetString();
+
+            var purchaseUnits = root.GetProperty("purchase_units")[0];
+            var amountObj = purchaseUnits.GetProperty("amount");
+            var amount = decimal.Parse(amountObj.GetProperty("value").GetString());
+
+            return new PayPalOrderResponse
+            {
+                Id = id,
+                Status = status,
+                Amount = amount
+            };
+        }
+    }
+
+    public class PayPalOrderResponse
+    {
+        public string Id { get; set; }
+        public string Status { get; set; }
+        public decimal Amount { get; set; }
+    }
+}

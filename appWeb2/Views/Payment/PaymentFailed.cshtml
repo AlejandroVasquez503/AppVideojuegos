@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Error en el Pago";
+}
+
+<div class="container mt-5">
+    <div class="alert alert-danger">
+        <h4 class="alert-heading">Error en el Pago</h4>
+        <p>@ViewBag.Error</p>
+        <hr>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Volver al Inicio</a>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+﻿using PayPal.v1.Orders;
+using PayPalServerSDK.Core;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace appWeb2.Services
+{
+    public class PayPalService
+    {
+        private readonly IConfiguration _configuration;
+        private readonly PayPalHttpClient _httpClient;
+
+        public PayPalService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            var clientId = _configuration["PayPal:ClientId"];
+            var clientSecret = _configuration["PayPal:ClientSecret"];
+            var mode = _configuration["PayPal:Mode"];
+
+            var environment = mode == "sandbox"
+                ? new PayPalServerSDK.Core.SandboxEnvironment(clientId, clientSecret)
+                : (PayPalServerSDK.Core.PayPalEnvironment)new PayPalServerSDK.Core.LiveEnvironment(clientId, clientSecret);
+
+            _httpClient = new PayPalHttpClient(environment);
+        }
+
+        /// <summary>
+        /// Crear una orden de pago en PayPal
+        /// </summary>
+        public async Task<string> CreateOrderAsync(decimal amount, string description, string returnUrl, string cancelUrl)
+        {
+            try
+            {
+                var request = new OrdersCreateRequest();
+                request.Headers.Add("Prefer", "return=representation");
+                request.Body = new Order()
+                {
+                    Intent = "CAPTURE",
+                    PurchaseUnits = new List<PurchaseUnitRequest>
+                    {
+                        new PurchaseUnitRequest()
+                        {
+                            AmountWithBreakdown = new AmountWithBreakdown()
+                            {
+                                CurrencyCode = "USD",
+                                Value = amount.ToString("F2")
+                            },
+                            Description = description
+                        }
+                    },
+                    ApplicationContext = new ApplicationContext()
+                    {
+                        ReturnUrl = returnUrl,
+                        CancelUrl = cancelUrl,
+                        UserAction = "PAY_NOW"
+                    }
+                };
+
+                var response = await _httpClient.Execute(request);
+                var result = response.Result<Order>();
+
+                return result.Id;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al crear la orden en PayPal", ex);
+            }
+        }
+
+        /// <summary>
+        /// Capturar el pago (después que el usuario aprueba)
+        /// </summary>
+        public async Task<Order> CaptureOrderAsync(string orderId)
+        {
+            try
+            {
+                var request = new OrdersCaptureRequest(orderId);
+                request.Headers.Add("Prefer", "return=representation");
+
+                var response = await _httpClient.Execute(request);
+                var result = response.Result<Order>();
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al capturar la orden {orderId}", ex);
+            }
+        }
+
+        /// <summary>
+        /// Obtener detalles de una orden
+        /// </summary>
+        public async Task<Order> GetOrderAsync(string orderId)
+        {
+            try
+            {
+                var request = new OrdersGetRequest(orderId);
+                var response = await _httpClient.Execute(request);
+                var result = response.Result<Order>();
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al obtener detalles de la orden {orderId}", ex);
+            }
+        }
+    }
+}

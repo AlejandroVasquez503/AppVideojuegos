@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Pago Exitoso";
+}
+
+<div class="container mt-5">
+    <div class="alert alert-success">
+        <h4 class="alert-heading">¡Pago Realizado Exitosamente!</h4>
+        <p>@ViewBag.Message</p>
+        <hr>
+        <p><strong>ID de Orden:</strong> @ViewBag.OrderId</p>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Volver al Inicio</a>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿{
+  "ConnectionStrings": {
+    "con": "Server=LAPTOP-E1T3RM3D\\SQLEXPRESS; Database=dbVideoJ ;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+  "PayPal": {
+    "ClientId": "YOUR_PAYPAL_CLIENT_ID",
+    "ClientSecret": "YOUR_PAYPAL_CLIENT_SECRET",
+    "Mode": "sandbox"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
